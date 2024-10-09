@@ -1,5 +1,7 @@
 # Javaで作るちっちゃいサンプルWebアプリケーションを作ってみよう
 
+[pages](https://tambara-ibm.github.io/tiny_sample_java_web_application/)
+
 ## はじめに
 
 (執筆中)
@@ -38,5 +40,5 @@
     1. 環境構築(AWS)
     1. CI/CD
     1. 静的コード解析
-    1. E2Eテスト自動化(Selenium)
+    1. E2Eテスト自動化(Selenium
     
