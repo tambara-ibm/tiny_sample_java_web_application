@@ -1,5 +1,11 @@
 # Git
 
+## インストール
+
+wingetでインストールする
+
+
+
 https://backlog.com/ja/git-tutorial/
 
 ## 初期化
