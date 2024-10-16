@@ -14,9 +14,7 @@
 1. アプリケーション開発の作法
     1. [階層化ディレクトリとコマンドプロンプト](cmdexe.html)
     1. [バージョン管理(Git)](git.html)
-    1. 作業日誌(Markdown)
-    1. コードレビュー(GitHub)
-    1. 情報展開(GitHub Page)
+    1. [作業日誌(Markdown)](markdown.html)
 1. 静的Webページ
     1. HTML
     1. CSS
