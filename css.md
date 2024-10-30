@@ -8,7 +8,7 @@
 
 と真ん中にでっかい文字で表示する方法など教えてもらえませんでした。だって、ビジネス文書ではそんなことしませんから。
 
-HTMLではあくまで「ここは見出し」とか「ここがヘッダ」のような構造だけを記述します。もちろん、「いやそんなこと言ったって、<span style="color:red;">文字を赤にしたい</span>もん」という要望は最初からあったので、HTMLにもその機能はあります。ありますが、それを使うのは止めて、「ヘッダは、48ポイントで、背景が青で文字の色は白にする」という情報は別に記述しましょうということにしました。そうしないと、画面上に出てくる見出しの1つ1つにその指定をするハメになりますから。画面デザインの指定をする書式のことをCSSといいます。今回は、CSSを学びます。
+HTMLではあくまで「ここは見出し」とか「ここがヘッダ」のような構造だけを記述します。もちろん、「いやそんなこと言ったって、<span style="color:red;">文字を赤にしたい</span>もん」という要望は最初からあったので、HTMLにもその機能はあります。ありますが、それを使うのは止めて、「トップレベルの見出しは、48ポイントで、背景が青で文字の色は白にする」という情報は別に記述しましょうということにしました。そうしないと、画面上に出てくる見出しの1つ1つにその指定をするハメになりますから。画面デザインの指定をする書式のことをCSSといいます。今回は、CSSを学びます。
 
 ## CSSの一次資料
 
@@ -27,8 +27,9 @@ HTMLではあくまで「ここは見出し」とか「ここがヘッダ」の�
     * 「[表のスタイル設定](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Styling_tables)」
     * 「[CSS のデバッグ](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Debugging_CSS)」
     * 「[CSS の整理](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Organizing)」
-* 「[テキストの装飾](https://developer.mozilla.org/ja/docs/Learn/CSS/Styling_text)」は、全部読んで下さい。
-* 「[CSS レイアウト](https://developer.mozilla.org/ja/docs/Learn/CSS/CSS_layout)」は、「[CSS レイアウト入門](https://developer.mozilla.org/ja/docs/Learn/CSS/CSS_layout/Introduction)」だけ読んで下さい。
+    
+1. 「[テキストの装飾](https://developer.mozilla.org/ja/docs/Learn/CSS/Styling_text)」は、全部読んで下さい。
+1. 「[CSS レイアウト](https://developer.mozilla.org/ja/docs/Learn/CSS/CSS_layout)」は、「[CSS レイアウト入門](https://developer.mozilla.org/ja/docs/Learn/CSS/CSS_layout/Introduction)」だけ読んで下さい。
 
 ## CSSのパワー
 
