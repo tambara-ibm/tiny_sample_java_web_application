@@ -16,8 +16,8 @@
     1. [バージョン管理(Git)](git.html)
     1. [作業日誌(Markdown)](markdown.html)
 1. 静的Webページ
-    1. HTML
-    1. CSS
+    1. [HTML](html.html)
+    1. [CSS](css.html)
     1. Webブラウザ開発者ツール
     1. cURLコマンド
 1. 動的Webページ
