@@ -62,7 +62,11 @@ MDNにはいろんなレベルのドキュメントがありますが、チュ�
 
 今回はこのページにある[HTML入門](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML)を読んでいきましょう。
 
-1. 「[HTML入門](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML)」は、「[HTML を始めよう](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML/Getting_started)」から「[コンテンツのページの構造化](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML/Structuring_a_page_of_content)」まで、すべて読んで下さい。できれば、実際にサンプルを自分のPCに保存して、表示して確かめていってください。このように本やサイトを、サンプルを自分で動かしながら読んでいくことを「写経」と呼びます。学習に最も有効な手段の1つです。
+1. 「[HTML入門](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML)」は、基礎なのでいったん一通りざっと読んで欲しいです。その上で、以下のところだけは実際にサンプルを自分のPCに保存して、表示して確かめていってください。このように本やサイトを、サンプルを自分で動かしながら読んでいくことを「写経」と呼びます。学習に最も有効な手段の1つです。
+
+    * 「[HTML を始めよう](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML/Getting_started)」
+    * 「[HTML テキストの基礎](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals)」
+    * 「[ハイパーリンクの作成](https://developer.mozilla.org/ja/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks)」
 2. 「[マルチメディアと埋め込み](https://developer.mozilla.org/ja/docs/Learn/HTML/Multimedia_and_embedding)」は「[HTML の画像](https://developer.mozilla.org/ja/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML)」だけを読んで下さい。
 3. 「[HTML 表](https://developer.mozilla.org/ja/docs/Learn/HTML/Tables)」は「[HTML の表の基本](https://developer.mozilla.org/ja/docs/Learn/HTML/Tables/Basics)」だけを読んで下さい。
 
