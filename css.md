@@ -14,12 +14,13 @@ HTMLではあくまで「ここは見出し」とか「ここがヘッダ」の�
 
 前回の続き。MDNのチュートリアルを読んでいきましょう。読むだけじゃなく、自分で触ってみる(写経する)のがベストです。でも、分量が多いので、最初はざっと流し読みでもOKです。どこでどんな話をしていたのか掴んでおけば、後でもう一度見に来ればよいのです。
 
-1. 「[CSSの第一歩](https://developer.mozilla.org/ja/docs/Learn/CSS/First_steps)」は、「[CSSとは何か](https://developer.mozilla.org/ja/docs/Learn/CSS/First_steps/What_is_CSS)」から「[経歴ページのスタイル設定](https://developer.mozilla.org/ja/docs/Learn/CSS/First_steps/Styling_a_biography_page)」まで、全てを読んで下さい。
+1. 「[CSSの第一歩](https://developer.mozilla.org/ja/docs/Learn/CSS/First_steps)」は、基礎的な内容なので一度ざっと目を通してください。その上で、以下の節は写経してみるのが良いと思います。
+    * 「[CSS 入門](https://developer.mozilla.org/ja/docs/Learn/CSS/First_steps/Getting_started)」
+    * 「[CSS の構造](https://developer.mozilla.org/ja/docs/Learn/CSS/First_steps/How_CSS_is_structured)」
 1. 「[CSS の構成要素](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks)」も全部を読めれば読んで欲しいのですが、ちょっと大変ですよね。以下だけを頑張って読んで下さい。
     * 「[CSS セレクター](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Selectors)」
     * 「[要素型、クラス、ID セレクター](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors)」
     * 「[結合子](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Selectors/Combinators)」
-    * 「[カスケード、詳細度、継承](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)」
     * 「[ボックスモデル](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/The_box_model)」
     * 「[背景と境界線](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders)」
     * 「[CSS の値と単位](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Values_and_units)」
@@ -28,7 +29,7 @@ HTMLではあくまで「ここは見出し」とか「ここがヘッダ」の�
     * 「[CSS のデバッグ](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Debugging_CSS)」
     * 「[CSS の整理](https://developer.mozilla.org/ja/docs/Learn/CSS/Building_blocks/Organizing)」
     
-1. 「[テキストの装飾](https://developer.mozilla.org/ja/docs/Learn/CSS/Styling_text)」は、全部読んで下さい。
+1. 「[テキストの装飾](https://developer.mozilla.org/ja/docs/Learn/CSS/Styling_text)」は、気になったときに戻ってきましょう。今は飛ばします。
 1. 「[CSS レイアウト](https://developer.mozilla.org/ja/docs/Learn/CSS/CSS_layout)」は、「[CSS レイアウト入門](https://developer.mozilla.org/ja/docs/Learn/CSS/CSS_layout/Introduction)」だけ読んで下さい。
 
 ## CSSのパワー
