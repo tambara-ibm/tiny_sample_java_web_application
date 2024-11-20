@@ -18,7 +18,7 @@
 1. 静的Webページ
     1. [HTML](html.html)
     1. [CSS](css.html)
-    1. Webブラウザ開発者ツール
+    1. [ブラウザの開発者ツール](devtool.html)
     1. cURLコマンド
 1. 動的Webページ
     1. テンプレートエンジン(Thymeleaf)
