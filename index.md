@@ -21,7 +21,7 @@
     1. [ブラウザの開発者ツール](devtool.html)
     1. cURLコマンド
 1. 動的Webページ
-    1. テンプレートエンジン(Thymeleaf)
+    1. [テンプレートエンジン(Thymeleaf)](thymeleaf.html)
     1. パスとパラメータ
     1. テキストファイルの読み書き
     1. 単体テストの自動化(Spock)
