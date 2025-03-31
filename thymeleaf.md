@@ -44,7 +44,7 @@ implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
 この記事の「Spring Initializrから開始」まではすでにやってあるので大丈夫です。「[Webコントローラーを自作する](https://spring.pleiades.io/guides/gs/serving-web-content#initial)」から始めて下さい。
 
-今まで作ったHelloControllerとは別に、ここに書いてあるおとりのGreetingControllerを作ってみてください。
+今まで作ったHelloControllerとは別に、ここに書いてある通りのGreetingControllerを作ってみてください。
 
 ただし、ここに書いてある20行足らずのコードを上から書いていってはいけません。プログラマはそんなことはしません。何より、皆さんの手元とパッケージ名が違いますから、そのままでは動きません。
 
