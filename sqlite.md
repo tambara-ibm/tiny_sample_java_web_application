@@ -1,21 +1,21 @@
-# �����[�V���i���E�f�[�^�x�[�X
+# リレーショナル・データベース
 
-## RDB�Ƃ�
+## RDBとは
 
-## SQLite�Ƃ�
+## SQLiteとは
 
-SQLite�͂��܂�A�v���Ɏg���Ȃ����ǁAExcel����Ɏg����̂Ŋo���Ă����ė~�����B
+SQLiteはあまりアプリに使われないけど、Excel代わりに使えるので覚えておいて欲しい。
 
-### �C���X�g�[��
+### インストール
 
 winget install SQLite.SQLite
 
-### �g����
+### 使い方
 
 #### REPL
 
-* `sqlite3`��REPL���[�h
-* `.help`�ŃR�}���h�ꗗ
+* `sqlite3`でREPLモード
+* `.help`でコマンド一覧
 
 #### SQL
 
@@ -25,9 +25,9 @@ winget install SQLite.SQLite
 
 * [Command Line Shell For SQLite](https://www.sqlite.org/cli.html)
 
-## ����
+## 準備
 
-�t�@�C�������w�肵�āAsqlite3�R�}���h�����s����
+ファイル名を指定して、sqlite3コマンドを実行する
 
 ```
 PS C:\Users\318535760\Desktop\2024H2WG_Java\tsjwa_4\data> sqlite3 data.sqlite
@@ -35,16 +35,16 @@ SQLite version 3.49.1 2025-02-18 13:38:58
 Enter ".help" for usage hints.
 ```
 
-.tables�R�}���h�����s�B1���e�[�u�����Ȃ����Ƃ��m�F���āA`CREATE TABLE`����B
+.tablesコマンドを実行。1つもテーブルがないことを確認して、`CREATE TABLE`する。
 
-�O��܂łɍ����data.csv�����̂܂ܓ������l�ɂ���B
+前回までに作ったdata.csvをそのまま入れられる様にする。
 
 ```
 sqlite> .tables
 sqlite> CREATE TABLE article(user_id INT, user_name TEXT, user_icon TEXT, book_name TEXT, isbn TEXT, message_id INT, content TEXT, timestamp TEXT);
 ```
 
-data.csv���C���|�[�g����
+data.csvをインポートする
 
 ```
 sqlite> .import data.csv article
@@ -53,57 +53,57 @@ data.csv:2: expected 8 columns but found 1 - filling the rest with NULL
 data.csv:3: expected 8 columns but found 1 - filling the rest with NULL
 ```
 
-�����import����t�@�C���̑z�肪csv�ɂȂ��Ă��Ȃ����߂ɏo��G���[
+これはimportするファイルの想定がcsvになっていないために出るエラー
 
 ```
 sqlite> .mode csv
 sqlite> .import data.csv article
 ```
 
-�����OK�B���g���m�F����
+これでOK。中身を確認する
 
 ```
 sqlite> select * from article;
-"1,tambara,tambara-icon.png,�V���[���b�N�E�z�[���Y�̊M��,9784120057342,101,2�͂܂œǂ񂾁B�z�[���Y�������w���Ȃ񂾂��H,2024-02-09T01:48:54.298Z",,,,,,,
-"2,Eri KUWAHARA,kuwahara-icon.png,AI���X�N���{�@�U�߂̃f�B�t�F���X�Ŋ�@������r�W�l�X����,9784296204083,102,���X�N�̏͂�3�ڂ܂œǂ񂾁B17�͑����Ȃ��I�H,2024-02-07T05:24:32.911Z",,,,,,,
-"3,harimoto,harimoto-icon.png,���� ���_��Linux,9784814400218,103,���^�V�A���i�b�N�X�`���b�g�f�L��,2024-01-30T10:07:32.929Z",,,,,,,
-1,tambara,tambara-icon.png,"�V���[���b�N�E�z�[���Y�̊M��",9784120057342,101,"2�͂܂œǂ񂾁B�z�[���Y�������w���Ȃ񂾂��H",2024-02-09T01:48:54.298Z
-2,"Eri KUWAHARA",kuwahara-icon.png,"AI���X�N���{�@�U�߂̃f�B�t�F���X�Ŋ�@������r�W�l�X����",9784296204083,102,"���X�N�̏͂�3�ڂ܂œǂ񂾁B17�͑����Ȃ��I�H",2024-02-07T05:24:32.911Z
-3,harimoto,harimoto-icon.png,"���� ���_��Linux",9784814400218,103,"���^�V�A���i�b�N�X�`���b�g�f�L��",2024-01-30T10:07:32.929Z
+"1,tambara,tambara-icon.png,シャーロック・ホームズの凱旋,9784120057342,101,2章まで読んだ。ホームズが腐れ大学生なんだが？,2024-02-09T01:48:54.298Z",,,,,,,
+"2,Eri KUWAHARA,kuwahara-icon.png,AIリスク教本　攻めのディフェンスで危機回避＆ビジネス加速,9784296204083,102,リスクの章の3つ目まで読んだ。17個は多くない！？,2024-02-07T05:24:32.911Z",,,,,,,
+"3,harimoto,harimoto-icon.png,入門 モダンLinux,9784814400218,103,ワタシ、リナックスチョットデキル,2024-01-30T10:07:32.929Z",,,,,,,
+1,tambara,tambara-icon.png,"シャーロック・ホームズの凱旋",9784120057342,101,"2章まで読んだ。ホームズが腐れ大学生なんだが？",2024-02-09T01:48:54.298Z
+2,"Eri KUWAHARA",kuwahara-icon.png,"AIリスク教本　攻めのディフェンスで危機回避＆ビジネス加速",9784296204083,102,"リスクの章の3つ目まで読んだ。17個は多くない！？",2024-02-07T05:24:32.911Z
+3,harimoto,harimoto-icon.png,"入門 モダンLinux",9784814400218,103,"ワタシ、リナックスチョットデキル",2024-01-30T10:07:32.929Z
 ```
 
-CSV�ŏ����o�����̂ŁA�`����ς��Ă݂�
+CSVで書き出されるので、形式を変えてみる
 
 ```
 sqlite> .mode list
 sqlite> select * from article;
-1,tambara,tambara-icon.png,�V���[���b�N�E�z�[���Y�̊M��,9784120057342,101,2�͂܂œǂ񂾁B�z�[���Y�������w���Ȃ񂾂��H,2024-02-09T01:48:54.298Z|||||||
-2,Eri KUWAHARA,kuwahara-icon.png,AI���X�N���{�@�U�߂̃f�B�t�F���X�Ŋ�@������r�W�l�X����,9784296204083,102,���X�N�̏͂�3�ڂ܂œǂ񂾁B17�͑����Ȃ��I�H,2024-02-07T05:24:32.911Z|||||||
-3,harimoto,harimoto-icon.png,���� ���_��Linux,9784814400218,103,���^�V�A���i�b�N�X�`���b�g�f�L��,2024-01-30T10:07:32.929Z|||||||
-1|tambara|tambara-icon.png|�V���[���b�N�E�z�[���Y�̊M��|9784120057342|101|2�͂܂œǂ񂾁B�z�[���Y�������w���Ȃ񂾂��H|2024-02-09T01:48:54.298Z
-2|Eri KUWAHARA|kuwahara-icon.png|AI���X�N���{�@�U�߂̃f�B�t�F���X�Ŋ�@������r�W�l�X����|9784296204083|102|���X�N�̏͂�3�ڂ܂œǂ񂾁B17�͑����Ȃ��I�H|2024-02-07T05:24:32.911Z
-3|harimoto|harimoto-icon.png|���� ���_��Linux|9784814400218|103|���^�V�A���i�b�N�X�`���b�g�f�L��|2024-01-30T10:07:32.929Z
+1,tambara,tambara-icon.png,シャーロック・ホームズの凱旋,9784120057342,101,2章まで読んだ。ホームズが腐れ大学生なんだが？,2024-02-09T01:48:54.298Z|||||||
+2,Eri KUWAHARA,kuwahara-icon.png,AIリスク教本　攻めのディフェンスで危機回避＆ビジネス加速,9784296204083,102,リスクの章の3つ目まで読んだ。17個は多くない！？,2024-02-07T05:24:32.911Z|||||||
+3,harimoto,harimoto-icon.png,入門 モダンLinux,9784814400218,103,ワタシ、リナックスチョットデキル,2024-01-30T10:07:32.929Z|||||||
+1|tambara|tambara-icon.png|シャーロック・ホームズの凱旋|9784120057342|101|2章まで読んだ。ホームズが腐れ大学生なんだが？|2024-02-09T01:48:54.298Z
+2|Eri KUWAHARA|kuwahara-icon.png|AIリスク教本　攻めのディフェンスで危機回避＆ビジネス加速|9784296204083|102|リスクの章の3つ目まで読んだ。17個は多くない！？|2024-02-07T05:24:32.911Z
+3|harimoto|harimoto-icon.png|入門 モダンLinux|9784814400218|103|ワタシ、リナックスチョットデキル|2024-01-30T10:07:32.929Z
 ```
 
-## Spring boot JPA����g��
+## Spring boot JPAから使う
 
 https://www.blackslate.io/articles/integrate-sqlite-with-spring-boot
 
-### JPA�Ƃ�
+### JPAとは
 
-Java Persistence API�̗��ŁAJava EE�W����OR�}�b�p�[�̎d�l�̂��ƁB
+Java Persistence APIの略で、Java EE標準のORマッパーの仕様のこと。
 
-Object-Relational Mapping�Ƃ́AJava�v���O������Ńf�[�^��ێ����Ă���I�u�W�F�N�g���A
-RDB�ɑΉ��Â��ĕۑ����悤�Ƃ������́B
-����ɂ���āA�v���O�������I�����Ă��I�u�W�F�N�g���̃f�[�^���ێ�����邩��"Persistence"�ȃ��P�B
+Object-Relational Mappingとは、Javaプログラム上でデータを保持しているオブジェクトを、
+RDBに対応づけて保存しようというもの。
+これによって、プログラムが終了してもオブジェクト内のデータが保持されるから"Persistence"なワケ。
 
-JPA�͎d�l�Ȃ̂ŁA����������B��\�I�Ȏ�����Hibernate�B�Ƃ������AHibernate���W���Ɏ�荞�܂��JPA�ɂȂ����B
+JPAは仕様なので、実装がある。代表的な実装はHibernate。というか、Hibernateが標準に取り込まれてJPAになった。
 
 
 
-### �ˑ��֌W
+### 依存関係
 
-build.gradle���C���B�ˑ��֌W�Ɉȉ���ǉ�
+build.gradleを修正。依存関係に以下を追加
 
 ```
 implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -111,23 +111,23 @@ implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
 implementation 'org.hibernate.orm:hibernate-community-dialects:6.6.13.Final'
 ```
 
-��ԏ��JPA���g������Starter�BStarter�Ƃ����̂́A�v���W�F�N�g�̍\�������āA
-�u���̈ˑ����C�u�����A�g�������ł���ˁH�v�ƃX�p�C���ėǂ������ɂ��낢��ȃ��C�u������
-�ˑ��Ɏ�荞��ł����d�g�݁B���̂��m��Ȃ��B
+一番上はJPAを使う時のStarter。Starterというのは、プロジェクトの構成を見て、
+「この依存ライブラリ、使いたいですよね？」とスパイして良い感じにいろいろなライブラリを
+依存に取り込んでくれる仕組み。得体が知れない。
 
-�Ȃ̂ŁA�ȉ���Starter������Ă���Ȃ����C�u�����BSQLite��Java��Web�A�v���J���Ɏg���̂͋H�Ȃ̂ŁA
-��ő����Ă�����K�v������B
+なので、以下はStarterが入れてくれないライブラリ。SQLiteをJavaのWebアプリ開発に使うのは稀なので、
+手で足してあげる必要がある。
 
-��ő���1�ڂ��ASQLite��JDBC�h���C�o�BJDBC�Ƃ����̂�Java�v���O�������猩���Ƃ���RDB�̐ڑ���
-���ׂē����悤�Ɉ�����悤�ɂ��邽�߂̃��C���B�Ȃ̂ŁA�����RDB���Ƃɂ���B
+手で足す1つ目が、SQLiteのJDBCドライバ。JDBCというのはJavaプログラムから見たときにRDBの接続が
+すべて同じように扱えるようにするためのレイヤ。なので、これはRDBごとにある。
 
-2�ڂ��Ahibernate-community-dialects�Bdialects�͕����Ƃ����Ӗ��ŁAHibernate��RDB��SQL���o���Ƃ���
-�eRDB���ƂɎ󂯕t������SQL�̈Ⴂ���z�����邽�߂̃��C���BHibernate��SQLite��W���ŃT�|�[�g���Ȃ��̂ŁA
-�R�~���j�e�B�ō쐬���ꂽ���̂�ǉ����Ă����B
+2つ目が、hibernate-community-dialects。dialectsは方言という意味で、HibernateがRDBにSQLを出すときに
+各RDBごとに受け付けられるSQLの違いを吸収するためのレイヤ。HibernateはSQLiteを標準でサポートしないので、
+コミュニティで作成されたものを追加しておく。
 
-### �ڑ��\��
+### 接続構成
 
-application.properties���C���B�ȉ���ǉ�
+application.propertiesを修正。以下を追加
 
 ```
 spring.datasource.url=jdbc:sqlite:data/data.sqlite
@@ -137,29 +137,29 @@ spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
 spring.jpa.hibernate.ddl-auto=none
 ```
 
-### Entity��ǉ�
+### Entityを追加
 
-SQLite�ɍ쐬����article�e�[�u����ǂݍ��ނ��߂̃N���X���쐬�B
+SQLiteに作成したarticleテーブルを読み込むためのクラスを作成。
 
-���Ȃ݂ɁAHibernate�̐݌v�v�z���猾���ƁA�t�B�����ō�����N���X��ۑ����邽�߂̕\�������B
+ちなみに、Hibernateの設計思想から言うと、逆。ここで作ったクラスを保存するための表が作られる。
 
 https://github.com/tambara-ibm/tsjwa_5/blob/main/src/main/java/one/tmbrms/readingsns/ArticleDB.java
 
-### Entity Repository��ǉ�
+### Entity Repositoryを追加
 
-RDB�ɑ΂���CRUD����Entity��ǂݍ��񂾂�A�ۑ������肷��@�\�������ō���Ă����B
+RDBに対してCRUDしてEntityを読み込んだり、保存したりする機能を自動で作ってくれる。
 
 https://github.com/tambara-ibm/tsjwa_5/blob/main/src/main/java/one/tmbrms/readingsns/ArticleRepository.java
 
-### Entity Repository�𐶐�
+### Entity Repositoryを生成
 
-MainController�̐擪�Ɉȉ���ǉ�����ƁA�����I��ArticleRepository�̃C���X�^���X������Ă����B
-����������������Ă����̂́ASpring�̊Ǘ����ɂ���N���X�����B
-Article�ł̓_���Ȃ̂ŁAArticle.getArticle�Ɉ����ŃC���X�^���X��n���悤�ɂ��Ă����B
+MainControllerの先頭に以下を追加すると、自動的にArticleRepositoryのインスタンスを作ってくれる。
+これを書いたら作ってくれるのは、Springの管理下にあるクラスだけ。
+Articleではダメなので、Article.getArticleに引数でインスタンスを渡すようにしておく。
 
-### Article���C��
+### Articleを修正
 
-getArticle���ȉ��̗l�ɏC������
+getArticleを以下の様に修正する
 
 ```
 public static List<Article> getArticles(ArticleRepository articleRepository) {
