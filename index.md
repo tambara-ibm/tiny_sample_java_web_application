@@ -28,7 +28,7 @@
     1. テスト駆動開発
 1. 永続化
     1. ファイルシステム
-    1. リレーショナルDB(SQLite)
+    1. [リレーショナルDB(SQLite)](sqlite.html)
     1. NoSQL(MongoDB)
 1. 更新処理
     1. FormとPOST
