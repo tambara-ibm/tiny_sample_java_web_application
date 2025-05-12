@@ -143,19 +143,21 @@ SQLiteに作成したarticleテーブルを読み込むためのクラスを作�
 
 ちなみに、Hibernateの設計思想から言うと、逆。ここで作ったクラスを保存するための表が作られる。
 
-https://github.com/tambara-ibm/tsjwa_5/blob/main/src/main/java/one/tmbrms/readingsns/ArticleDB.java
+* [ArticleDB](https://github.com/tambara-ibm/tsjwa_5/blob/main/src/main/java/one/tmbrms/readingsns/ArticleDB.java)
 
 ### Entity Repositoryを追加
 
 RDBに対してCRUDしてEntityを読み込んだり、保存したりする機能を自動で作ってくれる。
 
-https://github.com/tambara-ibm/tsjwa_5/blob/main/src/main/java/one/tmbrms/readingsns/ArticleRepository.java
+* [ArticleRepository](https://github.com/tambara-ibm/tsjwa_5/blob/main/src/main/java/one/tmbrms/readingsns/ArticleRepository.java)
 
-### Entity Repositoryを生成
+### MainControllerを修正して、Entity Repositoryを生成
 
 MainControllerの先頭に以下を追加すると、自動的にArticleRepositoryのインスタンスを作ってくれる。
 これを書いたら作ってくれるのは、Springの管理下にあるクラスだけ。
 Articleではダメなので、Article.getArticleに引数でインスタンスを渡すようにしておく。
+
+* [MainControllerの修正箇所](https://github.com/tambara-ibm/tsjwa_5/commit/58a933aad6b1014e9dacf9cd0cfd5f8c6ffb6e04#diff-bb52f9dc3a287fe68a74f8c3208895e35b87d336954204bb637aaa509830055f)
 
 ### Articleを修正
 
@@ -177,6 +179,7 @@ public static List<Article> getArticles(ArticleRepository articleRepository) {
     }
 ```
 
+* [Articleの修正箇所](https://github.com/tambara-ibm/tsjwa_5/commit/58a933aad6b1014e9dacf9cd0cfd5f8c6ffb6e04#diff-6fe0ecf984a23e212b6259f1e855675fb0e9f790e2eabb27758b552fe2c3c3d2)
 
 
 
