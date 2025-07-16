@@ -25,7 +25,7 @@ winget install SQLite.SQLite
 
 * [Command Line Shell For SQLite](https://www.sqlite.org/cli.html)
 
-## 準備
+### 準備
 
 ファイル名を指定して、sqlite3コマンドを実行する
 
@@ -85,23 +85,13 @@ sqlite> select * from article;
 3|harimoto|harimoto-icon.png|入門 モダンLinux|9784814400218|103|ワタシ、リナックスチョットデキル|2024-01-30T10:07:32.929Z
 ```
 
-## Spring boot JPAから使う
+### Spring boot JPAから使うセットアップ
 
 https://www.blackslate.io/articles/integrate-sqlite-with-spring-boot
 
-### JPAとは
-
-Java Persistence APIの略で、Java EE標準のORマッパーの仕様のこと。
-
-Object-Relational Mappingとは、Javaプログラム上でデータを保持しているオブジェクトを、
-RDBに対応づけて保存しようというもの。
-これによって、プログラムが終了してもオブジェクト内のデータが保持されるから"Persistence"なワケ。
-
-JPAは仕様なので、実装がある。代表的な実装はHibernate。というか、Hibernateが標準に取り込まれてJPAになった。
 
 
-
-### 依存関係
+#### 依存関係
 
 build.gradleを修正。依存関係に以下を追加
 
@@ -125,7 +115,7 @@ implementation 'org.hibernate.orm:hibernate-community-dialects:6.6.13.Final'
 各RDBごとに受け付けられるSQLの違いを吸収するためのレイヤ。HibernateはSQLiteを標準でサポートしないので、
 コミュニティで作成されたものを追加しておく。
 
-### 接続構成
+#### 接続構成
 
 application.propertiesを修正。以下を追加
 
@@ -137,7 +127,7 @@ spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
 spring.jpa.hibernate.ddl-auto=none
 ```
 
-### Entityを追加
+#### Entityを追加
 
 SQLiteに作成したarticleテーブルを読み込むためのクラスを作成。
 
@@ -145,13 +135,13 @@ SQLiteに作成したarticleテーブルを読み込むためのクラスを作�
 
 * [ArticleDB](https://github.com/tambara-ibm/tsjwa_5/blob/main/src/main/java/one/tmbrms/readingsns/ArticleDB.java)
 
-### Entity Repositoryを追加
+#### Entity Repositoryを追加
 
 RDBに対してCRUDしてEntityを読み込んだり、保存したりする機能を自動で作ってくれる。
 
 * [ArticleRepository](https://github.com/tambara-ibm/tsjwa_5/blob/main/src/main/java/one/tmbrms/readingsns/ArticleRepository.java)
 
-### MainControllerを修正して、Entity Repositoryを生成
+#### MainControllerを修正して、Entity Repositoryを生成
 
 MainControllerの先頭に以下を追加すると、自動的にArticleRepositoryのインスタンスを作ってくれる。
 これを書いたら作ってくれるのは、Springの管理下にあるクラスだけ。
@@ -159,7 +149,7 @@ Articleではダメなので、Article.getArticleに引数でインスタンス�
 
 * [MainControllerの修正箇所](https://github.com/tambara-ibm/tsjwa_5/commit/58a933aad6b1014e9dacf9cd0cfd5f8c6ffb6e04#diff-bb52f9dc3a287fe68a74f8c3208895e35b87d336954204bb637aaa509830055f)
 
-### Articleを修正
+#### Articleを修正
 
 getArticleを以下の様に修正する
 
@@ -182,4 +172,42 @@ public static List<Article> getArticles(ArticleRepository articleRepository) {
 * [Articleの修正箇所](https://github.com/tambara-ibm/tsjwa_5/commit/58a933aad6b1014e9dacf9cd0cfd5f8c6ffb6e04#diff-6fe0ecf984a23e212b6259f1e855675fb0e9f790e2eabb27758b552fe2c3c3d2)
 
 
+## Spring Boot JPA
 
+### JPAとは
+
+Java Persistence APIの略で、Java EE標準のORマッパーの仕様のこと。
+
+Object-Relational Mappingとは、Javaプログラム上でデータを保持しているオブジェクトを、
+RDBに対応づけて保存しようというもの。
+これによって、プログラムが終了してもオブジェクト内のデータが保持されるから"Persistence"なワケ。
+
+JPAは仕様なので、実装がある。代表的な実装はHibernate。というか、Hibernateが標準に取り込まれてJPAになった。
+
+### 一次資料
+
+* https://docs.spring.io/spring-data/jpa/reference/index.html
+
+#### Core Concept
+
+* CrudRepository
+* ListCrudRepository
+
+#### Defining Query Methods
+
+
+
+
+## テーブルを作り直す
+
+```
+DROP TABLE article;
+```
+
+### CREATE TABLE
+
+```
+sqlite> CREATE TABLE user(id int primary key, name text, icon text); 
+sqlite> CREATE TABLE book(name text, isbn text primary key);
+sqlite> CREATE TABLE message(id int primary key, user_id int, isbn test, content text, timestamp text);
+```
