@@ -237,4 +237,54 @@ Condition not satisfied:
 
 ### Spring Bootのコンポーネントのテスト
 
-(これからかく)
+単体テストはこのようにプログラムのある部分だけを動かして機能をテストする技法ですが、Spring Bootを使ったアプリケーションの場合、考えるべきことが追加されます。
+
+ここでいささか唐突ですが、DIについておさらいします。DI、すなわちDependency Injection(依存性注入)とは、プログラムの実行時に動的に設定や動きを変えるための仕組みです。例えば、テスト環境と本番環境では使うデータベースソフトウェアが違うので呼び出しに使うオブジェクトも違うとしましょう。でも、プログラムは全く同じで、呼び出しに使うライブラリが実行環境にある設定ファイルや環境変数により上手く差し替えられるようにする仕組みのことです。
+
+DI自体は特にプログラミング言語や実行環境に依らない概念ですが、実のところ、JavaによるWeb開発以外でそれほど使われていません。というのも、JavaによるWeb開発ではJakartaEEという規格があり、その規格で動くアプリケーションサーバ(TomcatやWebSphereなど)、アプリケーションサーバで動くWebアプリケーションが分かれています。そして、JakartaEEの中にCDIというDIで実行中のオブジェクトを差し替えてしまう規格もあり、これを使ってDIが簡単に行えるのです。逆に他の言語では他の仕組みのほうがメジャーなので、DIはあまり使われません。
+
+しかし、単体テストをするときにはこの仕組みは邪魔になります。アプリケーション全体を起動することなく単独のクラスをインスタンス化したいけど、そのクラスの中のメソッドの中で使うオブジェクトがDIで注入されなければ動かないとしたら、そのコードは正しく動作しません。テストが出来ません。
+
+その場合はDIされる部分と、テストしたいロジック部分を上手く分離させる工夫が必要になります。それは単体テストを上手く書く上でのテクニックです。一般に、アプリ機能を実現するプログラムコードを書くよりも単体テストのコードを書く方が高度なテクニックを必要とすることが多いです。高度なテクニックといっても、それはプログラムコードを整理して保守しやすくする基本的なテクニックであり、それを身につけることでアプリ機能のプログラムコードも確実に良いものに出来ます。プログラミングスキル向上のためにも、ぜひ、単体テストは身につけて欲しいです。
+
+とはいうものの、DIされるコードが含まれていると単体テストできないというのは不便ではあります。DI部分はJakartaEE規格のアプリケーションサーバ(これをJakartaEEコンテナといいます)がないと動作しないのですが、Spring BootはSpringフレームワークで作ったアプリケーションにライブラリとしてTomcatというJakartaEEコンテナをくっつけてしまったものですから、アプリケーションコードのなかにJakartaEEコンテナは持っています。これを使ってDI部分を動かしてテストできても良さそうなものです。
+
+というわけで、できます。今回のアプリケーションはDBアクセス部分でDIの機能を使っちゃってるので、DBにアクセスするコードをテストする例でやり方を説明しましょう。ただし、このようなテストを推奨するわけではありません。実際のDBを使ったテストはDIのためにJakartaEEコンテナを起動する時間もかかりますし、DBへのアクセスはJavaプログラムだけのテストに比べて遅いし不確実になりがちです。さらに、DBを使ったテストは並行性にも問題があります。複数のテストが1つのテーブルにアクセスしてテストをすると人が使っているデータを誤って消してしまうなどの競合が起きるため、テストをシーケンシャルに実行する必要があります。これもテスト実行時間を遅くする原因になります。けして推奨されるやり方ではないので、必要に応じて賢く組み入れてください。
+
+では、DIコンテナを含む場合はこんな感じです。
+
+```java
+package one.tmbrms.readingsns.repository
+
+import spock.lang.*
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment
+import org.springframework.beans.factory.annotation.Autowired
+import one.tmbrms.readingsns.entity.Book
+import one.tmbrms.readingsns.repository.BookRepository
+
+@DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+class BookSpec extends Specification {
+    @Autowired
+    BookRepository bookRepository
+
+    def "test book creation"() {
+        given: "a new book"
+        def books = bookRepository.findAll()
+
+        expect: 
+        books.collect{it.name}.sort().first() == "AIリスク教本　攻めのディフェンスで危機回避＆ビジネス加速"
+    }
+}
+```
+
+以前の説明で、`@Controler`などの特定のアノテーションを付けたクラスでしか`@Autowired`を使ったDIは動作しないよと説明しました。テストでもそれは変わらず、今回のようなJPAを使ったDBアクセスのテストであれば`@DataJpaTest`を使います。これを使った場合にはWebサーバなどDBのテストに不要なJakartaEEコンテナの機能は起動しないので、いくらかは動作が速くなります。それでもやはり遅いのは遅いのでほどほどで使いましょう。`@DataJpaTest`の使い方や設定については、[@DataJpaTest and Repository Class in JUnit
+](https://www.baeldung.com/junit-datajpatest-repository) が一次資料です。詳しくはそちらを確認してください。
+
+また、上の例ではすでにDBにデータが入っている状態でアクセスする例になっていますが、本来でいえば、テスト開始前に使うテーブルの中身をいったんすべて消し(Trancateし)、テストに必要なデータをセットしなおす方が良いです。何度もテストをしたり、テストがエラーで途中で止まってしまったりするとテーブルの中にはゴミが溜まっていることがあります。安定したテストのためには`setup`という名前のメソッドを作り、そこでテーブルの準備をします。`setpu`という名前のメソッドがあると、テスト実行の前に必ず実行されます。
+
+また、テーブルにテストに必要なデータをセットするときには別に用意したCSVファイルをロードするのではなく、テストコード中にデータも書き込んでしまうべきです。以下は私の書いたQiita記事ですが、参考にして下さい。
+
+[テストデータ？ CSV形式でテストコードに埋め込んでしまえ(Qiita)](https://qiita.com/tambara/items/b5bb0cd70a4c4c004453)
