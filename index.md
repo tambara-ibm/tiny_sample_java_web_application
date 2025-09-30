@@ -22,7 +22,7 @@
     1. cURLコマンド
 1. 動的Webページ
     1. [テンプレートエンジン(Thymeleaf)](thymeleaf.html)
-    1. パスとパラメータ
+    1. [パスとパラメータ](path_param.html)
     1. [テキストファイルの読み書き](textfile.html)
     1. [単体テストの自動化(Spock)](spock.html)
     1. テスト駆動開発
