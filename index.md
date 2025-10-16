@@ -9,7 +9,7 @@
 1. Javaアプリケーションのひな形
     1. Java処理系(Temurin)
     1. ビルドツール(Gradle)
-    1. [フレームワーク(Spring Boot)](spirngboot.html)
+    1. [フレームワーク(Spring Boot)](springboot.html)
 1. アプリケーション開発の作法
     1. [階層化ディレクトリとコマンドプロンプト](cmdexe.html)
     1. [バージョン管理(Git)](git.html)
